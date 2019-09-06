@@ -1,0 +1,29 @@
+server:
+  #应用端口号
+  port: 8000
+spring:
+  #数据库
+  datasource:
+    #地址
+    url: jdbc:mysql://127.0.0.1:3306/csdnboot?serverTimezone=UTC
+    #账号
+    username: root
+    #密码
+    password: root
+  jpa:
+    #输出执行语句
+    show-sql: true
+  thymeleaf:
+    #模板的模式，支持 HTML, XML TEXT JAVASCRIPT
+    mode: HTML
+    #编码 可不用配置
+    encoding: UTF-8
+    #开发配置为false,避免修改模板还要重启服务器
+    cache: false
+    #配置模板路径，默认是templates，可以不用配置
+    prefix: classpath:/templates/
+mybatis:
+    #mybatis xml存放路径
+    mapper-locations: classpath*:mapping/*.xml
+    #mybatis 实体类包路径
+    type-aliases-package: com.cc.ys.model
