@@ -29,7 +29,7 @@ public class UserController {
     @RequestMapping("selectById")
     @ResponseBody
     public UserVO selectById(Integer userId){
-       return  userService.selectById(userId);
+       return  userService.selectByPrimaryKey(userId);
     }
 
     @RequestMapping("add")
@@ -39,31 +39,31 @@ public class UserController {
         String passwd  = userVO.getPassword();
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         userVO.setPassword(encoder.encode(passwd));
-        return userService.add(userVO);
+        return userService.insert(userVO);
     }
 
     @RequestMapping("addSelective")
     @ResponseBody
     public Map<String, Object> addSelective(UserVO userVO){
-        return userService.addSelective(userVO);
+        return userService.insertSelective(userVO);
     }
 
     @RequestMapping("updateByIdSelective")
     @ResponseBody
     public Map<String, Object> updateByIdSelective(UserVO userVO){
-        return userService.updateByIdSelective(userVO);
+        return userService.updateByPrimaryKeySelective(userVO);
     }
 
     @RequestMapping("updateById")
     @ResponseBody
     public Map<String, Object> updateById(UserVO userVO){
-        return userService.updateById(userVO);
+        return userService.updateByPrimaryKey(userVO);
     }
 
     @RequestMapping("deleteById")
     @ResponseBody
     public Map<String, Object> deleteById(Integer userId){
-        return userService.deleteById(userId);
+        return userService.deleteByPrimaryKey(userId);
     }
 
     @RequestMapping("selectDataList")

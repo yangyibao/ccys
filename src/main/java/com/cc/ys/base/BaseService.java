@@ -11,17 +11,17 @@ public interface BaseService<T,E> {
 
     public BaseMapper<T> getMapper();
 
-    public T selectById(Serializable id);
+    public T selectByPrimaryKey(Serializable id);
 
-    public Map<String, Object> add(T model);
+    public Map<String, Object> insert(T model);
 
-    public Map<String, Object> addSelective(T model);
+    public Map<String, Object> insertSelective(T model);
 
-    public Map<String, Object> updateByIdSelective(T model);
+    public Map<String, Object> updateByPrimaryKeySelective(T model);
 
-    public Map<String, Object> updateById(T model);
+    public Map<String, Object> updateByPrimaryKey(T model);
 
-    public Map<String, Object> deleteById(Serializable id);
+    public Map<String, Object> deleteByPrimaryKey(Serializable id);
 
     public List<T> selectDataList(ParamVO paramVO);
 

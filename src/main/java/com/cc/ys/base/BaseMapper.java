@@ -11,42 +11,43 @@ public interface BaseMapper<T> {
      * @param id 主键id
      * @return T
      */
-    public T selectById(Serializable id);
-
-    /**
-     * 增加对象(所有字段)
-     * @param model 对象参数
-     * @return int
-     */
-    public int add(T model);
-
-    /**
-     * 增加对象（根据传入字段）
-     * @param model 对象参数
-     * @return int
-     */
-    public int  addSelective(T model);
-
-    /**
-     * 修改对象(根据传入字段)
-     * @param model 对象参数
-     * @return int
-     */
-    public int updateByIdSelective(T model);
-
-    /**
-     * 修改对象(所有字段)
-     * @param model 对象参数
-     * @return int
-     */
-    public int updateById(T model);
+    T selectByPrimaryKey(Serializable id);
 
     /**
      * 根据主键删除字段
      * @param id 主键
      * @return int
      */
-    public int deleteById(Serializable id);
+    int deleteByPrimaryKey(Serializable id);
+
+    /**
+     * 增加对象(所有字段)
+     * @param model 对象参数
+     * @return int
+     */
+     int insert(T model);
+
+    /**
+     * 增加对象（根据传入字段）
+     * @param model 对象参数
+     * @return int
+     */
+    int  insertSelective(T model);
+
+    /**
+     * 修改对象(根据传入字段)
+     * @param model 对象参数
+     * @return int
+     */
+    int updateByPrimaryKeySelective(T model);
+
+    /**
+     * 修改对象(所有字段)
+     * @param model 对象参数
+     * @return int
+     */
+    int updateByPrimaryKey(T model);
+
 
     /**
      * 查询数据列表

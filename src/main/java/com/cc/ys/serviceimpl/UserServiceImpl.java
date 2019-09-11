@@ -29,8 +29,8 @@ public class UserServiceImpl extends BaseServiceImpl<UserVO,UserMapper> implemen
         UserVO userVO = userMapper.selectUserByName(userName);
 
         RoleVO roleVO = new RoleVO();
-        roleVO.setId(1);
-        roleVO.setName("manage");
+        roleVO.setRoleId(1);
+        roleVO.setRoleName("manage");
         PermissionVO permissionVO = new PermissionVO();
         permissionVO.setId(1);
         permissionVO.setCode("a");

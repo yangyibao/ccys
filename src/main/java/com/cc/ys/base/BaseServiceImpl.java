@@ -37,28 +37,28 @@ public class BaseServiceImpl<T,E> extends SqlSessionDaoSupport implements BaseSe
         return (BaseMapper<T>) baseMapper;
     }
 
-    public T selectById(Serializable id) {
-        return getMapper().selectById(id);
+    public T selectByPrimaryKey(Serializable id) {
+        return getMapper().selectByPrimaryKey(id);
     }
 
-    public Map<String, Object> add(T model) {
-        return resultMap(getMapper().add(model));
+    public Map<String, Object> insert(T model) {
+        return resultMap(getMapper().insert(model));
     }
 
-    public Map<String, Object> addSelective(T model) {
-        return resultMap(getMapper().addSelective(model));
+    public Map<String, Object> insertSelective(T model) {
+        return resultMap(getMapper().insertSelective(model));
     }
 
-    public Map<String, Object> updateByIdSelective(T model) {
-        return resultMap(getMapper().updateByIdSelective(model));
+    public Map<String, Object> updateByPrimaryKeySelective(T model) {
+        return resultMap(getMapper().updateByPrimaryKeySelective(model));
     }
 
-    public Map<String, Object> updateById(T model) {
-        return resultMap(getMapper().updateById(model));
+    public Map<String, Object> updateByPrimaryKey(T model) {
+        return resultMap(getMapper().updateByPrimaryKey(model));
     }
 
-    public Map<String, Object> deleteById(Serializable id) {
-        return resultMap(getMapper().deleteById(id));
+    public Map<String, Object> deleteByPrimaryKey(Serializable id) {
+        return resultMap(getMapper().deleteByPrimaryKey(id));
     }
 
     public List<T> selectDataList(ParamVO paramVO) {
