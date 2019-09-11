@@ -8,11 +8,13 @@ public class UserVO {
     //用户id
     private  int userId;
     //用户名
-    private String userName;
+    private String username;
     //账号
     private String userNo;
     //密码
     private String password;
+    //角色
+    private RoleVO roleVO;
 
     public int getUserId() {
         return userId;
@@ -22,12 +24,12 @@ public class UserVO {
         this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getUserNo() {
@@ -44,5 +46,13 @@ public class UserVO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public RoleVO getRoleVO() {
+        return roleVO;
+    }
+
+    public void setRoleVO(RoleVO roleVO) {
+        this.roleVO = roleVO;
     }
 }

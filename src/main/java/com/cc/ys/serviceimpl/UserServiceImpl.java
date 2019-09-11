@@ -1,26 +1,55 @@
 package com.cc.ys.serviceimpl;
 
+import com.cc.ys.base.BaseServiceImpl;
 import com.cc.ys.mapper.UserMapper;
+import com.cc.ys.model.PermissionVO;
+import com.cc.ys.model.RoleVO;
 import com.cc.ys.model.UserVO;
 import com.cc.ys.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends BaseServiceImpl<UserVO,UserMapper> implements UserService {
 
-    @Resource
+    @Autowired(required = false)
     public UserMapper userMapper;
 
+    public UserServiceImpl(){
+        setMapperClass(UserMapper.class);
+    }
+
     @Override
-    public List<UserVO> queryAll(String userName, String userNo) {
-        Map<String,Object> map = new HashMap<>();
-        map.put("userName",userName);
-        map.put("userNo",userNo);
-        return userMapper.selectAll(map);
+    @Cacheable(cacheNames = "authority", key = "#username")
+    public UserVO getUserByName(String userName) {
+        UserVO userVO = userMapper.selectUserByName(userName);
+
+        RoleVO roleVO = new RoleVO();
+        roleVO.setId(1);
+        roleVO.setName("manage");
+        PermissionVO permissionVO = new PermissionVO();
+        permissionVO.setId(1);
+        permissionVO.setCode("a");
+        permissionVO.setName("PA");
+        permissionVO.setUrl("/pa");
+
+        PermissionVO permissionVO1 = new PermissionVO();
+        permissionVO1.setId(2);
+        permissionVO1.setCode("b");
+        permissionVO1.setName("PB");
+        permissionVO1.setUrl("/pb");
+
+        List<PermissionVO> list = new ArrayList<>();
+        list.add(permissionVO);
+        list.add(permissionVO1);
+        roleVO.setPermissionVOList(list);
+        if(null != userVO){
+            userVO.setRoleVO(roleVO);
+        }
+        return userVO;
     }
 }

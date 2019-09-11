@@ -22,6 +22,7 @@ spring:
     cache: false
     #配置模板路径，默认是templates，可以不用配置
     prefix: classpath:/templates/
+    suffix: .html
 mybatis:
     #mybatis xml存放路径
     mapper-locations: classpath*:mapping/*.xml

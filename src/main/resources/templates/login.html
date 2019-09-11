@@ -8,15 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Gentelella Alela!</title>
     <!-- Bootstrap -->
-    <link th:href="@{/manage/vendors/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/manage/vendors/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet" type="text/css"/>
     <!-- Font Awesome -->
-    <link th:href="@{/manage/vendors/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/manage/vendors/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css"/>
     <!-- NProgress -->
-    <link th:href="@{/manage/vendors/nprogress/nprogress.css}" rel="stylesheet">
+    <link th:href="@{/manage/vendors/nprogress/nprogress.css}" rel="stylesheet" type="text/css"/>
     <!-- Animate.css -->
-    <link th:href="@{/manage/vendors/animate.css/animate.min.css}" rel="stylesheet">
+    <link th:href="@{/manage/vendors/animate.css/animate.min.css}" rel="stylesheet" type="text/css"/>
     <!-- Custom Theme Style -->
-    <link th:href="@{/manage/build/css/custom.min.css}" rel="stylesheet">
+    <link th:href="@{/manage/build/css/custom.min.css}" rel="stylesheet" type="text/css"/>
   </head>
 
   <body class="login">
@@ -26,16 +26,16 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
+            <form th:action="@{/login}" method="post">
               <h1>Login Form</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input type="text" class="form-control" placeholder="username" name="username" id="username" required="" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" class="form-control" placeholder="password" name="password" id="password"  required="" />
               </div>
               <div>
-                <a class="btn btn-default submit" th:href="index.html">Log in</a>
+                <button class="btn btn-default submit" type="submit">Login</button>
                 <a class="reset_pass" href="#">Lost your password?</a>
               </div>
               <div class="clearfix"></div>
