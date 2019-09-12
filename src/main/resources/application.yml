@@ -5,7 +5,7 @@ spring:
   #数据库
   datasource:
     #地址
-    url: jdbc:mysql://127.0.0.1:3306/csdnboot?serverTimezone=UTC
+    url: jdbc:mysql://172.16.1.76:3306/csdnboot?serverTimezone=UTC
     #账号
     username: root
     #密码

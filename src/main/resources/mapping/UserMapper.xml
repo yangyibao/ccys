@@ -7,6 +7,11 @@
         <result column="user_no" property="userNo" jdbcType="VARCHAR"/>
         <result column="user_name" property="username" jdbcType="VARCHAR"/>
         <result column="user_passwd" property="password" jdbcType="VARCHAR"/>
+        <collection property="roles" ofType="RoleVO" column="roleId">
+            <id column="role_id" property="roleId"/>
+            <result column="role_name" property="roleName"/>
+            <result column="role_ext1" property="roleExt1"/>
+        </collection>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -118,9 +123,8 @@
     </select>
 
     <select id="selectUserByName" resultMap="BaseResultMap" parameterType="String">
-        select
-        <include refid="Base_Column_List"/>
-        from sys_user where user_name=#{_parameter}
+        SELECT u.*,r.role_id,r.role_name,r.role_ext1 FROM sys_user u LEFT JOIN sys_role r ON u.user_id=r.role_id
+        where user_name=#{_parameter}
     </select>
 
 </mapper>

@@ -136,4 +136,15 @@
       ext3 = #{ext3,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectPermissionByRoleIds" resultMap="BaseResultMap" parameterType="java.util.List">
+    SELECT p.* FROM sys_permission p LEFT JOIN sys_role_permission r ON p.id = r.permission_id
+    <where>
+      r.role_id in
+      <foreach collection="list" item="item" separator="," open="(" close=")" index="index">
+        #{item}
+      </foreach>
+    </where>
+
+  </select>
 </mapper>

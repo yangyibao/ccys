@@ -1,6 +1,7 @@
 package com.cc.ys.serviceimpl;
 
 import com.cc.ys.base.BaseServiceImpl;
+import com.cc.ys.mapper.PermissionVOMapper;
 import com.cc.ys.mapper.UserMapper;
 import com.cc.ys.model.PermissionVO;
 import com.cc.ys.model.RoleVO;
@@ -27,29 +28,6 @@ public class UserServiceImpl extends BaseServiceImpl<UserVO,UserMapper> implemen
     @Cacheable(cacheNames = "authority", key = "#username")
     public UserVO getUserByName(String userName) {
         UserVO userVO = userMapper.selectUserByName(userName);
-
-        RoleVO roleVO = new RoleVO();
-        roleVO.setRoleId(1);
-        roleVO.setRoleName("manage");
-        PermissionVO permissionVO = new PermissionVO();
-        permissionVO.setId(1);
-        permissionVO.setCode("a");
-        permissionVO.setName("PA");
-        permissionVO.setUrl("/pa");
-
-        PermissionVO permissionVO1 = new PermissionVO();
-        permissionVO1.setId(2);
-        permissionVO1.setCode("b");
-        permissionVO1.setName("PB");
-        permissionVO1.setUrl("/pb");
-
-        List<PermissionVO> list = new ArrayList<>();
-        list.add(permissionVO);
-        list.add(permissionVO1);
-        roleVO.setPermissionVOList(list);
-        if(null != userVO){
-            userVO.setRoleVO(roleVO);
-        }
         return userVO;
     }
 }

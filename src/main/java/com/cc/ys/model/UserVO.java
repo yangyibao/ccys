@@ -1,5 +1,7 @@
 package com.cc.ys.model;
 
+import java.util.List;
+
 /**
  * @tip 账户相关实体类
  * @author  ys
@@ -14,7 +16,7 @@ public class UserVO {
     //密码
     private String password;
     //角色
-    private RoleVO roleVO;
+    private List<RoleVO> roles;
 
     public int getUserId() {
         return userId;
@@ -48,11 +50,11 @@ public class UserVO {
         this.password = password;
     }
 
-    public RoleVO getRoleVO() {
-        return roleVO;
+    public List<RoleVO> getRoles() {
+        return roles;
     }
 
-    public void setRoleVO(RoleVO roleVO) {
-        this.roleVO = roleVO;
+    public void setRoles(List<RoleVO> roles) {
+        this.roles = roles;
     }
 }

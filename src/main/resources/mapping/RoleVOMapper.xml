@@ -90,4 +90,5 @@
       role_ext3 = #{roleExt3,jdbcType=VARCHAR}
     where role_id = #{roleId,jdbcType=INTEGER}
   </update>
+
 </mapper>
